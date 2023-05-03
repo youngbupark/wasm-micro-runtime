@@ -41,7 +41,6 @@ typedef struct korp_cond {
 #define TX_MS_TO_TICKS(ms)      ((ms) < TX_MS_TICK_VALUE ? 1 : (ms) / TX_MS_TICK_VALUE)
 
 /* clang-format off */
-void abort(void);
 size_t strspn(const char *s, const char *accept);
 size_t strcspn(const char *s, const char *reject);
 
