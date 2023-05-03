@@ -1,0 +1,6 @@
+[submodule "product-mini/platforms/threadx/lib/threadx"]
+	path = product-mini/platforms/threadx/lib/threadx
+	url = https://github.com/azure-rtos/threadx.git
+[submodule "product-mini/platforms/threadx/lib/netxduo"]
+	path = product-mini/platforms/threadx/lib/netxduo
+	url = https://github.com/azure-rtos/netxduo.git

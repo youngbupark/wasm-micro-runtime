@@ -4,7 +4,6 @@ add_definitions(-DBH_PLATFORM_THREADX)
 
 include_directories(${PLATFORM_SHARED_DIR})
 include_directories(${PLATFORM_SHARED_DIR}/../include)
-include_directories(${PLATFORM_SHARED_DIR}/threadx/ports/cortex_m4/gnu/inc)
 
 include (${CMAKE_CURRENT_LIST_DIR}/../common/math/platform_api_math.cmake)
 
