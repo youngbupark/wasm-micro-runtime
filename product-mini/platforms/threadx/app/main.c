@@ -5,6 +5,8 @@
 #include "bh_assert.h"
 #include "bh_log.h"
 #include "wasm_export.h"
+#include "board_init.h"
+#include "test_wasm.h"
 
 #define CONFIG_GLOBAL_HEAP_BUF_SIZE   WASM_GLOBAL_HEAP_SIZE
 #define CONFIG_APP_STACK_SIZE         8192
@@ -31,9 +33,6 @@ VOID board_setup(void);
  *
  * @return true if the main function is called, false otherwise.
  */
-bool
-wasm_application_execute_main(wasm_module_inst_t module_inst, int argc,
-                              char *argv[]);
 
 static void *
 app_instance_main(wasm_module_inst_t module_inst)
@@ -59,7 +58,7 @@ app_instance_main(wasm_module_inst_t module_inst)
         }
 
         LOG_VERBOSE("Calling app_main funciton\n");
-        wasm_runtime_call_wasm(exec_env, func, 0, argv);
+        wasm_runtime_call_wasm(exec_env, func, 0, (uint32_t*)argv);
 
         if (!wasm_runtime_get_exception(module_inst)) {
             os_printf("result: 0x%x\n", argv[0]);

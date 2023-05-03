@@ -1,13 +1,11 @@
 cmake_minimum_required(VERSION 3.8.2)
 
-set (WAMR_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../..)
-
 # Set the toolchain if not defined
 if(NOT CMAKE_TOOLCHAIN_FILE)
-    set(CMAKE_TOOLCHAIN_FILE "${WAMR_ROOT_DIR}/cmake/arm-gcc-cortex-m4.cmake")
+    set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/cmake/arm-gcc-cortex-m4.cmake")
 endif()
 
-include(${WAMR_ROOT_DIR}/cmake/utilities.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/utilities.cmake)
 
 # find_package(ThreadX REQUIRED HINTS $ENV{THREADX_BASE})
 project(wamr)
@@ -54,8 +52,7 @@ if (NOT DEFINED WAMR_BUILD_GLOBAL_HEAP_SIZE)
   set (WAMR_BUILD_GLOBAL_HEAP_SIZE 131072) # 128 KB
 endif ()
 
-include (${WAMR_ROOT_DIR}/build-scripts/runtime_lib.cmake)
-add_library(wamr ${WAMR_RUNTIME_LIB_SOURCE})
+set (WAMR_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../..)
 
 add_subdirectory(lib)
 add_subdirectory(app)

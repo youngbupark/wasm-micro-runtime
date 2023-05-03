@@ -429,7 +429,7 @@ int
 os_cond_destroy(korp_cond *cond)
 {
     bh_assert(cond);
-    os_mutex_destroy(&cond->thread_wait_list);
+    os_mutex_destroy(&cond->wait_list_lock);
     return BHT_OK;
 }
 

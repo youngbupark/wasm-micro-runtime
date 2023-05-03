@@ -1,6 +1,8 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT License.
 
+include (${WAMR_ROOT_DIR}/build-scripts/runtime_lib.cmake)
+
 set(SOURCES
     startup/${THREADX_TOOLCHAIN}/tx_initialize_low_level.S
     
@@ -11,11 +13,15 @@ set(SOURCES
 
 add_executable(${PROJECT_NAME}
     startup/${THREADX_TOOLCHAIN}/startup_stm32l4s5xx.s
+    ${WAMR_RUNTIME_LIB_SOURCE}
     ${SOURCES}
 )
 
 target_link_libraries(${PROJECT_NAME}
     azrtos::threadx
+    azrtos::netxduo
+
+    netx_driver
     stm32cubel4
 )
 
