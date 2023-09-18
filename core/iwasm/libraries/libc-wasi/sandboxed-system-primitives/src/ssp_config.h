@@ -41,7 +41,7 @@
 #endif
 
 #if !defined(__APPLE__) && !defined(__FreeBSD__) && !defined(__EMSCRIPTEN__) \
-    && !defined(ESP_PLATFORM)
+    && !defined(ESP_PLATFORM) && !defined(DISABLE_CLOCK_NANOSLEEP)
 #define CONFIG_HAS_CLOCK_NANOSLEEP 1
 #else
 #define CONFIG_HAS_CLOCK_NANOSLEEP 0
@@ -99,12 +99,6 @@
 #define st_atim st_atimespec
 #define st_ctim st_ctimespec
 #define st_mtim st_mtimespec
-#endif
-
-#ifdef __APPLE__
-#define CONFIG_TLS_USE_GSBASE 1
-#else
-#define CONFIG_TLS_USE_GSBASE 0
 #endif
 
 #if !defined(BH_PLATFORM_LINUX_SGX)
